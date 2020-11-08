@@ -4,9 +4,11 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
 import './css/index.css';
 
 class Login extends React.Component {
+
     render () {
         return (
             <Form onSubmit={this.handleSubmit}>
@@ -21,7 +23,7 @@ class Login extends React.Component {
                                 <Form.Label>Password: </Form.Label>
                                 <Form.Control type="password" placeholder="Password" />
                             </Form.Group>
-                            <Button variant="primary" type="button" href="./login">
+                            <Button variant="primary" type="button" href="./login" onClick={ this.handleClick}>
                                 Iniciar Sesion
                             </Button>
                         </Col>

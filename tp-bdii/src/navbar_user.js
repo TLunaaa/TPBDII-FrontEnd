@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 
-export default class NavBar extends React.Component {
+export default class NavBarUser extends React.Component {
     render () {
         return (
             <Navbar bg="dark" variant="dark">
@@ -17,8 +17,9 @@ export default class NavBar extends React.Component {
                     Redis
                 </Navbar.Brand>
                 <Nav>
-                    <Nav.Link href="./login">Iniciar Sesion</Nav.Link>
-                    <Nav.Link href="./register_form">Registrarse</Nav.Link>
+                    <Nav.Link href="">Cerrar Sesion</Nav.Link>
+                    <Nav.Link href="">Dashboard</Nav.Link>
+                    <Nav.Link href="">Cerrar Sesion</Nav.Link>
                 </Nav>
             </Navbar>
         );
