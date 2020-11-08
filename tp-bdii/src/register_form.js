@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import './css/index.css';
 
 class RegisterForm extends React.Component {
 
@@ -26,43 +27,47 @@ class RegisterForm extends React.Component {
 
     render() {
         return (
-            <Container>
-                <Row>
-                    <Col></Col>
-                    <Col>
-                        <Form onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.handleSubmit}>
+                <Container>
+                    <Row className="justify-content-center">
+                        <Col md={4}>
                             <Form.Group controlId="formBasicName">
                                 <Form.Label>Nombre: </Form.Label>
-                                <Form.Control type="text" placeholder="Nombre" />
+                                <Form.Control type="text" placeholder="Juan" />
                             </Form.Group>
                             <Form.Group controlId="formBasicLastName">
                                 <Form.Label>Apellido: </Form.Label>
-                                <Form.Control type="text" placeholder="Apellido" />
+                                <Form.Control type="text" placeholder="Perez" />
                             </Form.Group>
                             <Form.Group controlId="formBasicEmail">
-                                <Form.Label>Email address: </Form.Label>
-                                <Form.Control type="email" placeholder="Enter email" />
+                                <Form.Label>Email: </Form.Label>
+                                <Form.Control type="email" placeholder="example@example.com" />
                             </Form.Group>
+                        </Col>
+                        <Col md={4}>
                             <Form.Group controlId="formBasicUser">
                                 <Form.Label>Usuario: </Form.Label>
-                                <Form.Control type="text" placeholder="Usuario" />
+                                <Form.Control type="text" placeholder="JuanPerez123" />
                             </Form.Group>
                             <Form.Group controlId="formBasicPassword">
-                                <Form.Label>Password: </Form.Label>
-                                <Form.Control type="password" placeholder="Password" />
+                                <Form.Label>Contraseña: </Form.Label>
+                                <Form.Control type="password" placeholder="Contraseña" />
                             </Form.Group>
                             <Form.Group controlId="formBasicPasswordRepeat">
-                                <Form.Label>Repeat Password: </Form.Label>
-                                <Form.Control type="password" placeholder="Password" />
+                                <Form.Label>Repetir contraseña: </Form.Label>
+                                <Form.Control type="password" placeholder="Contraseña" />
                             </Form.Group>
+                        </Col>
+                    </Row>
+                    <Row className="justify-content-center">
+                        <Col md={3}>
                             <Button variant="primary" type="submit">
                                 Registrarse
                             </Button>
-                        </Form>
-                    </Col>
-                    <Col></Col>
-                </Row>
-            </Container>
+                        </Col>
+                    </Row>  
+                </Container>
+            </Form>
         )
     }
 }
