@@ -4,11 +4,11 @@ import {
     Route
 } from 'react-router-dom';
 
-export default class Routes extends React.Component {
+export default class RoutesUser extends React.Component {
     render () {
         return (
             <Switch>
-                <Route path="/login" component={ Login } />
+                <Route path="/"/>
             </Switch>
         );
     }

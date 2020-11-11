@@ -17,8 +17,12 @@ export default class NavBar extends React.Component {
                     Redis
                 </Navbar.Brand>
                 <Nav>
-                    <Nav.Link href="./login">Iniciar Sesion</Nav.Link>
-                    <Nav.Link href="./register_form">Registrarse</Nav.Link>
+                    <Nav.Link href="./login" >
+                        Iniciar Sesion
+                    </Nav.Link>
+                    <Nav.Link href="./register_form" >
+                        Registrarse
+                    </Nav.Link>
                 </Nav>
             </Navbar>
         );

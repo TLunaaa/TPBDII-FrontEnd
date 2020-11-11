@@ -1,11 +1,17 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import NavBarUser from './navbar_user';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { useAuth } from './auth';
 
-export default class MainClient extends React.Component {
-    render () {
-        return (
-            <NavBarUser />
-        );
-    }
+
+export default function MainClient() {
+
+    let auth = useAuth();
+    let history = useHistory();
+
+    return (
+        <NavBarUser onClick={ () => {
+            auth.signout( () => history.push("/home"));
+        } }/>
+    );
 }
