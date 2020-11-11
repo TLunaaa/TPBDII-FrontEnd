@@ -10,7 +10,7 @@ import {
 } from 'react-router';
 import { useAuth } from './auth';
 
-import './css/index.css';
+import './css/index.module.css';
 
 function Login () {
 

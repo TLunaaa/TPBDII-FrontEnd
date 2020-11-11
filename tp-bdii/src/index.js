@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Routes from './Routes';
 
-import './css/index.css';
+import './css/index.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/App.scss';
 
 
 class App extends React.Component {
