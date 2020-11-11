@@ -78,33 +78,33 @@ body {
         }
     }
 
-  main {
-    padding: 24px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
-    header {
-      margin-bottom: 40px;
-      border-bottom: 1px solid #efefef;
-      h1 {
+    main {
+        padding: 24px;
+        flex-grow: 1;
         display: flex;
-        align-items: center;
-        transform: translateX(-20px);
-      }
-    }
-
-    footer {
-        margin-top: auto;
-        color: #888;
-        text-align: center;
-        a {
-            text-decoration: none;
-            color: #888;
-            &:hover {
-                text-decoration: underline;
+        flex-direction: column;
+        overflow-y: scroll;
+        header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid #efefef;
+            h1 {
+                display: flex;
+                align-items: center;
+                transform: translateX(-20px);
             }
         }
+
+        footer {
+            margin-top: auto;
+            color: #888;
+            text-align: center;
+            a {
+                text-decoration: none;
+                color: #888;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
     }
     .social-bagdes {
