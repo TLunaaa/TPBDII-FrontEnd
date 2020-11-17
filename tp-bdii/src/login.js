@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -8,7 +8,7 @@ import {
     useHistory, 
     useLocation, 
 } from 'react-router';
-import { useAuth } from './auth';
+import { authContext } from './auth';
 
 import './css/index.module.css';
 
@@ -16,7 +16,7 @@ function Login () {
 
     let history = useHistory();
     let location = useLocation();
-    let auth = useAuth();
+    let auth = useContext(authContext);
   
     let { from } = location.state || { from: { pathname: "/home" } };
     let login = () => {

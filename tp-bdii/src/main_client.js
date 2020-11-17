@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router';
 import NavBarUser from './navbar_user';
-import { useAuth } from './auth';
+import { authContext } from './auth';
 import Row from 'react-bootstrap/Row';
 import CustomSideBar from './sidebar';
 
@@ -11,7 +11,7 @@ import { Container, Col } from 'react-bootstrap';
 
 export default function MainClient() {
 
-    let auth = useAuth();
+    let auth = useContext(authContext);
     let history = useHistory();
 
     return (
@@ -21,7 +21,7 @@ export default function MainClient() {
                     <Col>
                         <CustomSideBar className='fill-window' 
                             onClick={ () => {
-                                auth.signout( () => history.push("/home"));
+                                auth.signout( () => history.push("/login"));
                             } }
                         />
                     </Col>

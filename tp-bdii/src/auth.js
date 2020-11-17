@@ -18,7 +18,11 @@ const fakeAuth = {
     }
 };
 
-const authContext = createContext();
+const authContext = createContext({
+    user: null,
+    signin: () => {},
+    signout: () => {}
+});
 
 function ProvideAuth({ children }) {
     const auth = useProvideAuth();
@@ -94,11 +98,11 @@ function PrivateRoute({ children, ...rest }) {
             }
         />
     );
-  }
+}
 
 export {
     ProvideAuth,
     AuthButton,
     PrivateRoute,
-    useAuth
+    authContext
 }
