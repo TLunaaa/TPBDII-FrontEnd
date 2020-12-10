@@ -46,11 +46,11 @@ class Login extends React.Component {
 
         var config = {
             method: 'post',
-            url: 'http://localhost:3001/login',
+            url: '/login',
             headers: { 
               'Content-Type': 'application/json'
             },
-            data : data
+            data: data
         };
           
 

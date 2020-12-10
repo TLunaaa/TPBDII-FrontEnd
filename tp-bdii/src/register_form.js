@@ -42,13 +42,12 @@ class RegisterForm extends React.Component {
 
         var config = {
             method: 'post',
-            url: 'http://localhost:3001/register',
+            url: '/register',
             headers: { 
               'Content-Type': 'application/json'
             },
             data : data
         };
-          
 
         axios(config)
             .then( (result) => {
