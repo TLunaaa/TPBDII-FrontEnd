@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Routes from './Routes';
+import Routes from './components/Routes';
 
 import './css/index.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -32,26 +32,6 @@ class App extends React.Component {
             <Routes />
         );
     }
-/*
-   render (){
-        if (!this.state.logged){
-            return (
-                <Router>
-                    <NavBar />
-                    <Routes onClick={ () => this.changeLogin() } />
-                </Router>
-            )
-        }
-        else {
-            return (
-                <Router>
-                    <MainClient />
-                    <RoutesUser />
-                </Router>
-            );
-        }
-    }
-*/
 }
 
 

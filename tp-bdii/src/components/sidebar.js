@@ -11,7 +11,7 @@ import {
 import { SiRedis } from 'react-icons/si';
 import { FiDatabase, FiMenu, FiLogOut } from 'react-icons/fi';
 
-import styles from './css/index.module.css';
+import styles from '../css/index.module.css';
 import 'react-pro-sidebar/dist/css/styles.css';
 
 export default class CustomSideBar extends React.Component {

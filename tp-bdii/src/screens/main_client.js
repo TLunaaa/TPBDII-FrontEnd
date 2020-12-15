@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router';
-import NavBarUser from './navbar_user';
-import { authContext } from './auth';
+import NavBarUser from '../components/navbar_user';
+import { authContext } from '../auth';
 import Row from 'react-bootstrap/Row';
-import CustomSideBar from './sidebar';
+import CustomSideBar from '../components/sidebar';
 
-import styles from './css/index.module.css';
-import Workspace from './workspace';
+import styles from '../css/index.module.css';
+import Workspace from '../components/workspace';
 import { Container, Col } from 'react-bootstrap';
 
 export default function MainClient() {

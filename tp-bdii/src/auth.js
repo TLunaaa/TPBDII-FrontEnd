@@ -4,7 +4,7 @@ import {
     Redirect,
     useHistory,
 } from 'react-router-dom';
-import NavBar from './navbar';
+import NavBar from './components/navbar';
 
 const fakeAuth = {
     isAuthenticated: false,

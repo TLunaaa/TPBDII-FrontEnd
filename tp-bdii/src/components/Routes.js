@@ -4,14 +4,14 @@ import {
     Switch, 
     Route
 } from 'react-router-dom';
-import RegisterForm from './register_form';
-import Login from './login';
-import MainClient from './main_client';
+import RegisterForm from '../screens/register_form';
+import Login from '../screens/login';
+import MainClient from '../screens/main_client';
 import {
     ProvideAuth,
     PrivateRoute,
     AuthButton
-} from './auth';
+} from '../auth';
 
 export default class Routes extends React.Component {
 
