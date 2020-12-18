@@ -1,36 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Routes from './components/Routes';
+import MainClient from './screens/main_client';
+import useToken from './functions/useToken';
 
 import './css/index.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/App.scss';
 
 
-class App extends React.Component {
-    constructor (props){
-        super(props);
-        this.state = {
-            logged: false,
-        }
-    }
+function App() {
 
-    changeLogin (){
-        this.setState({ 
-            logged: true 
-        });
+    const { token, setToken } = useToken();
+    console.log(token);
+    if(token == null){
+        return <Routes setToken={ setToken } />
     }
-
-    logOut (){
-        this.setState({
-            logged: false
-        });
-    }
-
-    render (){
-        return (
-            <Routes />
-        );
+    else {
+        return <MainClient />
     }
 }
 

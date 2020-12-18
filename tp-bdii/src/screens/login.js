@@ -4,77 +4,47 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { 
-    useHistory, 
-    useLocation, 
-} from 'react-router';
-import { authContext } from '../auth';
-import axios from 'axios';
 
+import axios from 'axios';
 import '../css/index.module.css';
 
-function Login() {
+
+async function loginUser(username, password){
+    const data = JSON.stringify({
+        user: username,
+        password: password
+    });
+
+    var config = {
+        method: 'post',
+        url: '/login',
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        data: data
+    };
+      
+
+    return axios(config)
+        .then( (result) => {
+            alert('Sesion Iniciada');
+            return result.data;
+        })
+        .catch( error => {
+            alert(`Ha ocurrido un error: ${error}`);
+        });
+}
+
+
+function Login({ setToken }) {
     const [username, setUserName] = useState();
     const [password, setPassword] = useState();
-/*   
-    constructor (props){
-        super(props);
-        this.state = {
-            username: '',
-            password: '',
-            toLogin: false,
-        }
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    getToLogin() {
-        return this.state.toLogin;
-    }
-    handleChange(event){
-        this.setState({ 
-            ...this.state, 
-            [event.target.name]: event.target.value });
-    }
-*/
-    let history = useHistory();
-    let location = useLocation();
-    let auth = useContext(authContext);
-
-    let { from } = location.state || { from: { pathname: "/home" } };
-    let login = () => {
-        auth.signin(() => {
-            history.replace(from);
-        });
-    }
-
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        const data = JSON.stringify({
-            user: username,
-            password: password
-        });
-        console.log(data);
-
-        var config = {
-            method: 'post',
-            url: '/login',
-            headers: { 
-              'Content-Type': 'application/json'
-            },
-            data: data
-        };
-          
-
-        axios(config)
-            .then( (result) => {
-                alert('Sesion Iniciada');
-                login();
-            })
-            .catch( error => {
-                alert(`Ha ocurrido un error: ${error}`);
-            });
+        
+        const userToken = await loginUser(username, password);
+        setToken(userToken);
     }
     
     return (
@@ -109,25 +79,6 @@ function Login() {
                 </Row>
             </Container>
         </Form>
-    );
-}
-
-function LoginButton(props) {
-    let history = useHistory();
-    let location = useLocation();
-    let auth = useContext(authContext);
-  
-    let { from } = location.state || { from: { pathname: "/home" } };
-    let login = () => {
-        if ( props.condition() )
-            auth.signin(() => {
-                history.replace(from);
-            });
-    }
-    return (
-        <Button variant="primary" type="submit" onClick={ login } >
-            Iniciar Sesion
-        </Button>
     );
 }
 

@@ -60,6 +60,12 @@ export default class CustomSideBar extends React.Component {
                             title='Data Bases'
                             icon={<FiDatabase />}
                         >
+                            {/*
+                                this.props.workspaces.map((item, i) => {
+                                    <MenuItem>{item}</MenuItem>
+                                })
+                                */
+                            }
                             <MenuItem>Database 1</MenuItem>
                             <MenuItem>Database 2</MenuItem>
                         </SubMenu>

@@ -33,7 +33,7 @@ class RegisterForm extends React.Component {
     handleSubmit(event){
         event.preventDefault();
         const data = JSON.stringify({
-            user: this.state.user,
+            user: this.state.username,
             password: this.state.password,
             name: this.state.name,
             surname: this.state.surname,
@@ -48,6 +48,7 @@ class RegisterForm extends React.Component {
             },
             data : data
         };
+        console.log(data);
 
         axios(config)
             .then( (result) => {
