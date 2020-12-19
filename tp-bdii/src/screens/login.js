@@ -8,6 +8,7 @@ import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 import '../css/index.module.css';
 
+const methods = require('../functions/server');
 
 async function loginUser(username, password){
     const data = JSON.stringify({
@@ -43,7 +44,7 @@ function Login({ setToken }) {
     const handleSubmit = async (event) => {
         event.preventDefault();
         
-        const userToken = await loginUser(username, password);
+        const userToken = await methods.login(username, password);
         setToken(userToken);
     }
     
