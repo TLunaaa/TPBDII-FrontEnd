@@ -10,6 +10,7 @@ import {
 } from 'react-pro-sidebar';
 import { SiRedis } from 'react-icons/si';
 import { FiDatabase, FiMenu, FiLogOut } from 'react-icons/fi';
+import { FaPlusCircle } from 'react-icons/fa';
 
 import styles from '../css/index.module.css';
 import 'react-pro-sidebar/dist/css/styles.css';
@@ -22,10 +23,10 @@ export default function CustomSideBar(props){
     const array = props.workspaces[0];
     const {workspace, setWorkspace} = useWorkspace();
 
-    useEffect(() => {
+    if(!workspace){
         setWorkspace(array[0]);
-        console.log(workspace);
-    }, []);
+    }
+    console.log(workspace);
     
     return(
         <ProSidebar style={ styles.sidebar }>
@@ -69,6 +70,11 @@ export default function CustomSideBar(props){
                         <MenuItem>Database 1</MenuItem>
                         <MenuItem>Database 2</MenuItem>
                     </SubMenu>
+                    <MenuItem
+                        icon={<FaPlusCircle />}
+                    >
+                        Nueva Base de Datos
+                    </MenuItem>
                     <MenuItem
                         icon={<FiLogOut/>}
                         onClick={ () => props.onClick() }

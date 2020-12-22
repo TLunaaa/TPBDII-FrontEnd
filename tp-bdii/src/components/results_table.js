@@ -1,12 +1,12 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
+import useResults from '../functions/useResults';
 
-export default class ResultsTable extends React.Component {
-    constructor(props){
-        super(props);
-    }
+export default function ResultsTable() {
 
-    render() {
+    const {results, setResults} = useResults();
+
+    if (results) 
         return (
             <Table striped bordered hover variant="dark">
                 <thead>
@@ -35,5 +35,6 @@ export default class ResultsTable extends React.Component {
                 </tbody>
             </Table>
         );
-    }
+    else 
+        return null;
 }
