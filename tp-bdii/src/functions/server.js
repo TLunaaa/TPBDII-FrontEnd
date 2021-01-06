@@ -118,7 +118,7 @@ export const command = (workspace, op, key, value, username) => {
 
     var config = {
         method: 'post',
-        url: '/workspaces/' + workspace +'/query',
+        url: '/workspaces/' + workspace + '/query',
         headers: { 
           'Content-Type': 'application/json'
         },
