@@ -17,18 +17,13 @@ export default function ExecuteWindow(props){
     
     const sendCommand = async () => {
         var split = command.split(" ", 3);
-        if(split.length > 2){
-            var op = split[0];
-            var key = split[1];
-            var value = command.slice(op.length + key.length + 2);
-            
-            const commandAns = await methods.command(workspace, op, key, value, token.user);
-            console.log(commandAns);
-            setResults(commandAns);
-        }
-        else {
-            alert('El comando no es valido');
-        }
+        var op = split[0];
+        var key = split[1];
+        var value = command.slice(op.length + key.length + 2);
+        
+        const commandAns = await methods.command(workspace, op, key, value, token.user);
+        console.log(commandAns);
+        setResults(commandAns);
     }
 
     return(

@@ -5,12 +5,12 @@ import useResults from '../functions/useResults';
 export default function ResultsWindow() {
     const {results, setResults} = useResults();
     if (results)
-        return(
+        return (
             <Card className="bg-dark text-white">
                 <Card.Body>
                     <Card.Title>Comando</Card.Title>
                     <Card.Text>
-                        Resultados del Comando
+                        { results }
                     </Card.Text>
                 </Card.Body>
             </Card>
