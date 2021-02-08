@@ -8,6 +8,9 @@ import './css/index.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/App.scss';
 
+import { Provider } from 'react-redux';
+import store from "./redux/store"
+
 
 function App() {
 
@@ -23,6 +26,8 @@ function App() {
 
 
 ReactDOM.render(
-    <App />,
+    <Provider store={store}>
+        <App />
+    </Provider>,
     document.getElementById('root')
 );

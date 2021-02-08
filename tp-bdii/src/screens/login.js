@@ -4,9 +4,10 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import { login } from "../redux/userSlice"
 import axios from 'axios';
 import '../css/index.module.css';
+import { useDispatch } from  'react-redux'
 
 const methods = require('../functions/server');
 
@@ -41,9 +42,15 @@ function Login({ setToken }) {
     const [username, setUserName] = useState();
     const [password, setPassword] = useState();
 
+    const dispatch = useDispatch(); 
+    
     const handleSubmit = async (event) => {
         event.preventDefault();
-        
+        dispatch(
+            login({
+                username: username,
+                password: password,
+        }))
         const userToken = await methods.login(username, password);
         setToken(userToken);
     }
