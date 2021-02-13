@@ -8,34 +8,9 @@ import { login } from "../redux/userSlice"
 import axios from 'axios';
 import '../css/index.module.css';
 import { useDispatch } from  'react-redux'
+import actions from '../redux/actions/actions'
 
 const methods = require('../functions/server');
-
-async function loginUser(username, password){
-    const data = JSON.stringify({
-        user: username,
-        password: password
-    });
-
-    var config = {
-        method: 'post',
-        url: '/login',
-        headers: { 
-          'Content-Type': 'application/json'
-        },
-        data: data
-    };
-      
-
-    return axios(config)
-        .then( (result) => {
-            alert('Sesion Iniciada');
-            return result.data;
-        })
-        .catch( error => {
-            alert(`Ha ocurrido un error: ${error}`);
-        });
-}
 
 
 function Login({ setToken }) {
@@ -90,4 +65,4 @@ function Login({ setToken }) {
     );
 }
 
-export default Login;
+export default login;

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import { SET_USER, SET_WORKSPACE, ADD_WORKSPACE} from './actions'
+import { SET_USER, SET_WORKSPACE, ADD_WORKSPACE, GET_WORKSPACE} from './actions/actions'
 
 const merge = (prev, next) => Object.assign({}, prev, next)
 
@@ -10,6 +10,8 @@ const userReducer = (state = {}, action) => {
             return merge(state, action.payload)
         case SET_WORKSPACE:
             return merge(state, {prevWorkspace: action.payload})
+        case GET_WORKSPACE:
+            return {...state, workspace: action.payload}
         default: 
             return state
     }

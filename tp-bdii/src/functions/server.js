@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const login = (username, password) => {
+export const login = (username, password) => async (dispatch) => {
     const data = JSON.stringify({
         user: username,
         password: password
@@ -14,16 +14,26 @@ export const login = (username, password) => {
         },
         data: data
     };
-      
 
-    return axios(config)
-        .then( (result) => {
-            alert('Sesion Iniciada');
-            return result.data;
-        })
-        .catch( error => {
-            alert(`Ha ocurrido un error: ${error}`);
-        });
+    const result = await axios.post(config);
+
+    dispatch({
+        type: 'traer_usuarios',
+        payload: result.data
+    })
+
+    // return axios(config)
+    //     .then( (result) => {
+    //         dispatch({
+    //             type: 'traer_usuarios',
+    //             payload: result.data
+    //         })
+    //         alert('Sesion Iniciada');
+    //         return result.data;
+    //     })
+    //     .catch( error => {
+    //         alert(`Ha ocurrido un error: ${error}`);
+    //     });
 }
 
 export const register = (username, password, name, surname, email) => {
@@ -54,7 +64,7 @@ export const register = (username, password, name, surname, email) => {
         });
 }
 
-export const workspaces = (username) => {
+export const getWorkspaces = (username) => {
     var config = {
         method: 'get',
         url: '/users/' + username + '/workspaces',
