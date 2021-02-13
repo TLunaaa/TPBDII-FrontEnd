@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { 
     ProSidebar, 
     Menu, 
@@ -11,22 +11,38 @@ import {
 import { SiRedis } from 'react-icons/si';
 import { FiDatabase, FiMenu, FiLogOut } from 'react-icons/fi';
 import { FaPlusCircle } from 'react-icons/fa';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
 
 import styles from '../css/index.module.css';
 import 'react-pro-sidebar/dist/css/styles.css';
 
 import useWorkspace from '../functions/useWorkspace';
+import useToken from '../functions/useToken';
+import { createWorkspace } from '../functions/server';
 
 
 export default function CustomSideBar(props){
     
     const array = props.workspaces[0];
     const {workspace, setWorkspace} = useWorkspace();
+    const {token, setToken} = useToken();
+    const [show, setShow] = useState(false);
+    const [newWorkspace, setNewWorkspace] = useState();
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     if(!workspace){
         setWorkspace(array[0]);
     }
     console.log(workspace);
+
+    const callCreateWorksapce = async () => {
+        const result = await createWorkspace(token.user);
+    }
     
     return(
         <ProSidebar style={ styles.sidebar }>
@@ -67,14 +83,50 @@ export default function CustomSideBar(props){
                                         </MenuItem>
                             })
                         }
-                        <MenuItem>Database 1</MenuItem>
-                        <MenuItem>Database 2</MenuItem>
+                        {/* <MenuItem>Database 1</MenuItem>
+                        <MenuItem>Database 2</MenuItem> */}
                     </SubMenu>
                     <MenuItem
                         icon={<FaPlusCircle />}
+                        onClick={ handleShow }
                     >
                         Nueva Base de Datos
                     </MenuItem>
+                    {/* Modal de Creacion de Workspace */}
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Nueva Base de Datos</Modal.Title>
+                        </Modal.Header>
+
+                        <Modal.Body>
+                            <InputGroup size="sm" className="mb-3">
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text id="inputGroup-sizing-sm">Nombre DB:</InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <FormControl 
+                                    aria-label="Small" 
+                                    aria-describedby="inputGroup-sizing-sm"
+                                    value={ newWorkspace }
+                                    onChange={ e => setNewWorkspace(e.target.value) }
+                                />
+                            </InputGroup>
+                        </Modal.Body>
+
+                        <Modal.Footer>
+                            <Button 
+                                variant="secondary"
+                                onClick={handleClose}
+                            >
+                                Close
+                            </Button>
+                            <Button 
+                                variant="primary"
+                                onClick={ callCreateWorksapce }
+                            >
+                                Crear
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
                     <MenuItem
                         icon={<FiLogOut/>}
                         onClick={ () => props.onClick() }

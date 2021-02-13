@@ -71,6 +71,76 @@ export const workspaces = (username) => {
             alert(`Ha ocurrido un error Workspace: ${error}`);
         })
 }
+/*
+Completar
+*/
+export const createWorkspace = (username) => {
+
+    var config = {
+        method: 'post',
+        url: '/users/' + username + '/workspaces',
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+    };
+
+    return axios(config)
+        .then((result) => {
+            alert('Workspace Creado');
+            return result.data;
+        })
+        .catch(error => {
+            alert(`Ha ocurrido un error: ${error}`);
+        });
+}
+
+export const deleteWorkspace = (username, workspace) => {
+    const data = JSON.stringify({
+        user: username,
+    });
+
+    var config = {
+        method: 'delete',
+        url: '/workspaces/' + workspace,
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        data : data
+    };
+
+    return axios(config)
+        .then((result) => {
+            alert('Workspace eliminado');
+            return result.data;
+        })
+        .catch(error => {
+            alert(`Ha ocurrido un error: ${error}`);
+        });
+}
+
+export const shareWorkspace = (username, workspace, colaborator) => {
+    const data = JSON.stringify({
+        owner: username,
+        workspace: workspace,
+    });
+
+    var config = {
+        method: 'patch',
+        url: '/users/' + colaborator + '/workspaces',
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        data : data
+    };
+
+    return axios(config)
+        .then((result) => {
+            alert(`User ${colaborator} added to Workspace: ${workspace}`);
+        })
+        .catch(error => {
+            alert(`Ha ocurrido un error: ${error}`);
+        })
+}
 
 export const counter = (username) => {
     var config = {
