@@ -21,7 +21,7 @@ import 'react-pro-sidebar/dist/css/styles.css';
 
 import useWorkspace from '../functions/useWorkspace';
 import useToken from '../functions/useToken';
-import { createWorkspace } from '../functions/server';
+import { createWorkspace, history } from '../functions/server';
 
 
 export default function CustomSideBar(props){
@@ -83,8 +83,6 @@ export default function CustomSideBar(props){
                                         </MenuItem>
                             })
                         }
-                        {/* <MenuItem>Database 1</MenuItem>
-                        <MenuItem>Database 2</MenuItem> */}
                     </SubMenu>
                     <MenuItem
                         icon={<FaPlusCircle />}

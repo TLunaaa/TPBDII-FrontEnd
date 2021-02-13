@@ -110,7 +110,7 @@ export const deleteWorkspace = (username, workspace) => {
 
     return axios(config)
         .then((result) => {
-            alert('Workspace eliminado');
+            alert(`Workspace: ${workspace} eliminado`);
             return result.data;
         })
         .catch(error => {
@@ -160,7 +160,7 @@ export const counter = (username) => {
         })
 } 
 
-export const history = (username, workspace) => {
+export const getHistory = (username, workspace) => {
     var config = {
         method: 'get',
         url: '/users/' + username + '/history?workspaceId=' + workspace,
@@ -178,7 +178,7 @@ export const history = (username, workspace) => {
         })
 }
 
-export const command = (workspace, op, key, value, username) => {
+export const executeCommand = (workspace, op, key, value, username) => {
     const data = JSON.stringify({
         operation: op,
         key: key,
