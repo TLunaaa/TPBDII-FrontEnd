@@ -1,13 +1,12 @@
 import React, { useState, useEffect, Component } from 'react';
 import Row from 'react-bootstrap/Row';
 import CustomSideBar from '../components/sidebar';
-import workspace from '../redux/actions/workspace'
 import Workspace from '../components/workspace';
 import { Container, Col } from 'react-bootstrap';
 import useToken from '../functions/useToken';
 import { connect } from 'react-redux';
+import * as actions from '../redux/actions/actions';
 
-const methods = require('../functions/server');
 
 class MainClient extends Component {
     
@@ -19,12 +18,12 @@ class MainClient extends Component {
     //     setLoading(false);
     // }, []);
 
-    // const logOut = () => {
-    //     localStorage.clear();
-    // };
-
     componentDidMount(){
         this.props.getWorkspace();
+    }
+
+    logOut = () => {
+        localStorage.clear();
     }
 
     render(){
@@ -34,10 +33,10 @@ class MainClient extends Component {
                 <Container style={{ height: '100%' }} className={'mx-0 px-0'}>
                     <Row  style={{ height: '100%' }}>
                         <Col>
-                            {/* <CustomSideBar className='fill-window'
-                                workspaces={ workspace }
+                            <CustomSideBar className='fill-window'
+                                workspaces={ Workspace }
                                 onClick={ logOut }
-                            /> */}
+                            />
                         </Col>
                         <Col md={8}>
                             <Workspace />
@@ -53,7 +52,7 @@ const mapStateToProps = (reducers) => {
     return reducers.reducer;
 };
 
-export default connect(mapStateToProps, getWorkspace)(MainClient);
+export default connect(mapStateToProps, actions)(MainClient);
 
 // const methods = require('../functions/server');
 
