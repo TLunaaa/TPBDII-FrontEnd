@@ -23,12 +23,12 @@ const getCounter = async(user) => {
 
 export default function Workspace(){
     
-    const [command, setCommand] = useState();
-    const [count, setCount] = useState();
     const {workspace, setWorkspaces} = useWorkspace();
     const {results, setResults} = useResults();
     const {token, setToken} = useToken();
     
+    const [command, setCommand] = useState();
+    const [count, setCount] = useState();
     const [show, setShow] = useState(false);
     const [colaborator, setColaborator] = useState();
     
@@ -138,6 +138,15 @@ export default function Workspace(){
                 </Col>
             </Row>
             <Row>
+                <h5>Ejemplos de Operaciones</h5>
+            </Row>
+            <Row>
+                <Button variant="info" className="m-3" onClick={ () => setCommand('get hello') }>Get Hello</Button>
+                <Button variant="info" className="m-3" onClick={ () => setCommand('set hello world!')}>Set Hello World!</Button>
+                <Button variant="info" className="m-3" onClick={ () => setCommand('delete hello')}>Delete Hello</Button>
+                <Button variant="info" className="m-3" onClick={ () => setCommand('exists hello')}>Exists Hello</Button>
+            </Row>
+            <Row mt={4} className={'mt-4'}>
                 <InputGroup>
                     <InputGroup.Prepend>
                         <InputGroup.Text>Comando</InputGroup.Text>

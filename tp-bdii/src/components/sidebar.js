@@ -21,12 +21,12 @@ import 'react-pro-sidebar/dist/css/styles.css';
 
 import useWorkspace from '../functions/useWorkspace';
 import useToken from '../functions/useToken';
-import { createWorkspace, history } from '../functions/server';
+import { createWorkspace, workspaces } from '../functions/server';
 
 
 export default function CustomSideBar(props){
     
-    const array = props.workspaces[0];
+    let array = props.workspaces[0];
     const {workspace, setWorkspace} = useWorkspace();
     const {token, setToken} = useToken();
     const [show, setShow] = useState(false);
@@ -42,6 +42,10 @@ export default function CustomSideBar(props){
 
     const callCreateWorksapce = async () => {
         const result = await createWorkspace(token.user);
+        const workspace_array = await workspaces(token.user);
+        array = workspace_array;
+        console.log(array);
+        
     }
     
     return(
@@ -77,7 +81,10 @@ export default function CustomSideBar(props){
                         {
                             array.map(item => {
                                 return <MenuItem
-                                            onClick={() => setWorkspace(item)}
+                                            onClick={() => {
+                                                setWorkspace(item)
+                                                alert(`Se ha cambiado el Workspace a: ${item}`)
+                                            }}
                                         >
                                             {item}
                                         </MenuItem>
