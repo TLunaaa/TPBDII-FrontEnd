@@ -69,11 +69,6 @@ export default function CustomSideBar(props){
 
             <SidebarContent>
                 <Menu iconShape='circle'>
-                    <MenuItem
-                        icon={<FiMenu />}
-                    > 
-                        Menu
-                    </MenuItem>
                     <SubMenu 
                         title='Data Bases'
                         icon={<FiDatabase />}

@@ -6,15 +6,12 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Modal from 'react-bootstrap/Modal';
 
-//import ExecuteWindow from './execute_window';
 import HistoryTable from './history';
-import ResultsWindow from './results_window';
-//import QueryCount from '../components/query_count';
 import useToken from '../functions/useToken';
 import useWorkspace from '../functions/useWorkspace';
 import useResults from '../functions/useResults';
 
-import { shareWorkspace, counter, executeCommand, deleteWorkspace } from '../functions/server';
+import { shareWorkspace, counter, executeCommand, deleteWorkspace, workspaces } from '../functions/server';
 
 
 const getCounter = async(user) => {
@@ -40,8 +37,12 @@ export default function Workspace(){
         setShow(false);
     }
 
+    //Habria que setear un nuevo workspace al eliminar el activo
     const callDeteleWorspace = async () => {
         const restult = await deleteWorkspace(token.user, workspace);
+        const workspaceArray = await workspaces(token.user);
+        //Se setea el primer workspace como activo;
+        setWorkspace(workspaceArray[0]);
     }
 
     getCounter(token.user)
@@ -58,8 +59,10 @@ export default function Workspace(){
             var value = command.slice(op.length + key.length + 2);
             
             const commandAns = await executeCommand(workspace, op, key, value, token.user);
-            getCounter(token.user);
-            console.log(commandAns);
+            getCounter(token.user)
+                .then(res => {
+                    setCount(res);
+                })
             setResults(commandAns);
         }
     }
@@ -69,7 +72,7 @@ export default function Workspace(){
             return(
                 <Card className="bg-dark text-white">
                     <Card.Body>
-                        <Card.Title>Comando</Card.Title>
+                        <Card.Title>Resultado</Card.Title>
                         <Card.Text>
                             { results }
                         </Card.Text>
@@ -139,7 +142,7 @@ export default function Workspace(){
                 </Col>
             </Row>
             <Row>
-                <h5>Ejemplos de Operaciones</h5>
+                <h5>Ejemplos de Operaciones:</h5>
             </Row>
             <Row>
                 <Button variant="info" className="m-3" onClick={ () => setCommand('get hello') }>Get Hello</Button>
@@ -168,7 +171,12 @@ export default function Workspace(){
                     </InputGroup.Append>
                 </InputGroup>
             </Row>
-            <Row className={'mt-4'}>
+            <Row className={'mt-4'} 
+                style={{
+                    height: '300px',
+                    overflow: 'scroll'
+                }}
+            >
                 <Col md={6}>
                     <Results/>
                 </Col>
