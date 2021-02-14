@@ -40,42 +40,6 @@ export default function MainClient() {
         localStorage.clear();
     }
 
-    getCounter(token.user)
-    .then(res => {
-        setCount(res);
-        console.log(count);
-    })
-
-    const sendCommand = async () => {
-        if (command){
-            var split = command.split(" ", 3);
-            var op = split[0];
-            var key = split[1];
-            var value = command.slice(op.length + key.length + 2);
-            
-            const commandAns = await methods.command(workspace, op, key, value, token.user);
-            getCounter(token.user);
-            console.log(commandAns);
-            setResults(commandAns);
-        }
-    }
-
-    const Results = () => {
-        if (results){
-            return(
-                <Card className="bg-dark text-white">
-                    <Card.Body>
-                        <Card.Title>Comando</Card.Title>
-                        <Card.Text>
-                            { results }
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-            )
-        }
-        return null;
-    }
-
     if (isLoading){
         return <div> Loading... </div>
     }

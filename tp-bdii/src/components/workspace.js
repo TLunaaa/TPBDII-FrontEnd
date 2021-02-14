@@ -23,7 +23,7 @@ const getCounter = async(user) => {
 
 export default function Workspace(){
     
-    const {workspace, setWorkspaces} = useWorkspace();
+    const {workspace, setWorkspace} = useWorkspace();
     const {results, setResults} = useResults();
     const {token, setToken} = useToken();
     
@@ -37,6 +37,7 @@ export default function Workspace(){
     
     const callShareWorkspace = async () => {
         const result = await shareWorkspace(token.user, workspace, colaborator);
+        setShow(false);
     }
 
     const callDeteleWorspace = async () => {

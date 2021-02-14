@@ -12,7 +12,6 @@ import './css/App.scss';
 function App() {
 
     const { token, setToken } = useToken();
-    console.log(token);
     if(token == null){
         return <Routes setToken={ setToken } />
     }

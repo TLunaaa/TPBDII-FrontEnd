@@ -26,26 +26,26 @@ import { createWorkspace, workspaces } from '../functions/server';
 
 export default function CustomSideBar(props){
     
-    let array = props.workspaces[0];
+    //let array = props.workspaces[0];
     const {workspace, setWorkspace} = useWorkspace();
     const {token, setToken} = useToken();
     const [show, setShow] = useState(false);
     const [newWorkspace, setNewWorkspace] = useState();
+    const [workspaceArray, setWorkspaceArray] = useState(props.workspaces[0]);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     if(!workspace){
-        setWorkspace(array[0]);
+        setWorkspace(workspaceArray[0]);
     }
     console.log(workspace);
 
     const callCreateWorksapce = async () => {
         const result = await createWorkspace(token.user);
         const workspace_array = await workspaces(token.user);
-        array = workspace_array;
-        console.log(array);
-        
+        setWorkspaceArray(workspace_array);
+        setShow(false);
     }
     
     return(
@@ -79,7 +79,7 @@ export default function CustomSideBar(props){
                         icon={<FiDatabase />}
                     >
                         {
-                            array.map(item => {
+                            workspaceArray.map(item => {
                                 return <MenuItem
                                             onClick={() => {
                                                 setWorkspace(item)
