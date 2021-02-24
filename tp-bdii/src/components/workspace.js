@@ -41,6 +41,7 @@ export default function Workspace(){
     const callDeteleWorspace = async () => {
         const restult = await deleteWorkspace(token.user, workspace);
         const workspaceArray = await workspaces(token.user);
+        window.location.reload();
         //Se setea el primer workspace como activo;
         setWorkspace(workspaceArray[0]);
     }

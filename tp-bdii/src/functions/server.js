@@ -18,7 +18,6 @@ export const login = (username, password) => {
 
     return axios(config)
         .then( (result) => {
-            alert('Sesion Iniciada');
             return result.data;
         })
         .catch( error => {

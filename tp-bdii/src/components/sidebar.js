@@ -78,7 +78,7 @@ export default function CustomSideBar(props){
                                 return <MenuItem
                                             onClick={() => {
                                                 setWorkspace(item)
-                                                alert(`Se ha cambiado el Workspace a: ${item}`)
+                                                window.location.reload()
                                             }}
                                         >
                                             {item}

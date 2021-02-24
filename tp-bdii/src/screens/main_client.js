@@ -38,6 +38,7 @@ export default function MainClient() {
 
     const logOut = () => {
         localStorage.clear();
+        window.location.reload();
     }
 
     if (isLoading){
@@ -45,7 +46,7 @@ export default function MainClient() {
     }
     else
         return (
-            <div style={{ height: '100%' }} className={'bg-secondary'}>
+            <div style={{ height: '100%' }} className={'rgb(255,255,255)'}>
                 <Container style={{ height: '100%' }} className={'mx-0 px-0'}>
                     <Row  style={{ height: '100%' }}>
                         <Col>
